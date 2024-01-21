@@ -4,74 +4,56 @@
 
 const timeDisplay = $('#currentDay');
 const saveAppt = $(".saveBtn")
+
+let currentHour = dayjs().hour()
 let timeBlock = $(".time-block")
+
+
 
 function displayTime() {
   let rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
   timeDisplay.text(rightNow);
 }
 
-//! Might use reminder for the end
-// function saveReminder() {
-// alert("Your schedule has been saved")
-// }
+function saveReminder() {
+alert("Your schedule has been saved")
+}
 
-//! GETTING AND SETTING SCHEDULE TO STORAGE
-
+// GETTING AND SETTING SCHEDULE TO STORAGE
 $(saveAppt).on('click', function () {
-  //! THIS = saveAppt function
+  // THIS = saveAppt function
   let descriptionValue = $(this).siblings('.scheduleText').val();
   let hourValue = $(this).parent().attr('id');
   localStorage.setItem(hourValue, descriptionValue);
   console.log(hourValue, descriptionValue)
-  // saveReminder()
+  saveReminder()
 });
-for (let i = 0; i <= 9; i++) {
+
+//for Loop saves all entry to local storage
+for (let i = 0; i <= 12; i++) {
   $(`#hour${i} .scheduleText`).val(localStorage.getItem(`hour${i}`));
 }
 
 
-// const today = dayjs().startOf('day');
-// let rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
-
-
 //! PAST, FUTURE AND PRESENT ATTRIBUTES TO SCHEDULE
-
 //! create variable for  time
 //! if statements for past, present and future
-//? append class to page?
 
 function scheduleAttributes() {
   $.each(timeBlock, function() {
-    let currentHour = dayjs().hour();
-    let scheduledTime = parseInt($(this).attr('id').split("hour")[1]);
-
-    // if schedule made is BEFORE the current hour
+    let scheduledTime = parseInt($(this).attr('id').split("hour")[1])
+    // if schedule is BEFORE the current hour
     if (scheduledTime < currentHour) {
-      $(this).addClass('past');
+      $(this).addClass("past")
     } else if (scheduledTime === currentHour) {
-      // if schedule made WITHIN the current hour
-      $(this).addClass('present');
-      $(this).removeClass('past');
-    } else if (scheduledTime > currentHour) {
+      // if schedule is WITHIN the current hour
+      $(this).addClass("present")
+    } else {
       // if schedule made AFTER the current hour
-      $(this).removeClass('past');
-      $(this).addClass('future');
+      $(this).addClass("future")
     }
   });
 }
-
-//! For Loop for storage not working. If not, use this
-// $('#hour9, .scheduleText').val(localStorage.getItem('hour9'));
-// $('#hour10 .scheduleText').val(localStorage.getItem('hour10'));
-// $('#hour11 .scheduleText').val(localStorage.getItem('hour11'));
-// $('#hour12 .scheduleText').val(localStorage.getItem('hour12'));
-// $('#hour1 .scheduleText').val(localStorage.getItem('hour1'));
-// $('#hour2 .scheduleText').val(localStorage.getItem('hour2'));
-// $('#hour3 .scheduleText').val(localStorage.getItem('hour3'));
-// $('#hour4 .scheduleText').val(localStorage.getItem('hour4'));
-// $('#hour5 .scheduleText').val(localStorage.getItem('hour5'));
-
 
 
 
