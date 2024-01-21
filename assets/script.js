@@ -4,29 +4,31 @@
 
 const timeDisplay = $('#currentDay');
 const saveAppt = $(".saveBtn")
-
-
-
 const appt = $('textarea[name="description"]');
 
 
-$(function workSchedule() {
-  saveAppt.on('click', function () {  
-    console.log('Appointment:', appt.val());
 
+// const hour = document.getElementById('#hour9');
+
+
+function displayTime() {
+  const rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
+  timeDisplay.text(rightNow);
+}
+
+
+$('.saveBtn').on('click', function () {
+  const hourValue = saveAppt.parent().attr('id');
+  const descriptionValue = saveAppt.siblings('.scheduleText').val();
+  console.log(hourValue, descriptionValue)
   });
-
-  function displayTime() {
-    const rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
-    timeDisplay.text(rightNow);
-  }
-
-
   
+  $('#hour9 .scheduleText').val(localStorage.getItem('hour9'));
+  $('#hour10 .scheduleText').val(localStorage.getItem('hour10'));
+
 
   displayTime()
   setInterval(displayTime, 1000);  
-  });
   
 
 
@@ -48,19 +50,3 @@ $(function workSchedule() {
 
     // TODO: Add code to display the current date in the header of the page ✅
 
-
-  //! Storage not currently working
-  // let appointments = localStorage.getItem('appointments');
-  // const today = dayjs().startOf('day');
-
-  // function savetext() {
-  //   localStorage.setItem("#9am", JSON.stringify("desciption"))
-  // }
-  
-  // function showText() {
-  //   localStorage.getItem("currentDay")
-  // }
-  
-
-  // showText()
-  // savetext()
