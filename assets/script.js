@@ -6,25 +6,36 @@ const timeDisplay = $('#currentDay');
 const saveAppt = $(".saveBtn")
 const appt = $('textarea[name="description"]');
 
-
-
-// const hour = document.getElementById('#hour9');
-
-
 function displayTime() {
   const rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
   timeDisplay.text(rightNow);
 }
 
+function saveReminder() {
+alert("Your schedule has been saved")
+}
+
 
 $('.saveBtn').on('click', function () {
-  const hourValue = saveAppt.parent().attr('id');
-  const descriptionValue = saveAppt.siblings('.scheduleText').val();
+  let descriptionValue = $(this).siblings('.scheduleText').val();
+  let hourValue = $(this).parent().attr('id');
+  localStorage.setItem(hourValue, descriptionValue);
   console.log(hourValue, descriptionValue)
-  });
+  saveReminder()
+});
+
+
   
+
   $('#hour9 .scheduleText').val(localStorage.getItem('hour9'));
   $('#hour10 .scheduleText').val(localStorage.getItem('hour10'));
+  $('#hour11 .scheduleText').val(localStorage.getItem('hour11'));
+  $('#hour12 .scheduleText').val(localStorage.getItem('hour12'));
+  $('#hour1 .scheduleText').val(localStorage.getItem('hour1'));
+  $('#hour2 .scheduleText').val(localStorage.getItem('hour2'));
+  $('#hour3 .scheduleText').val(localStorage.getItem('hour3'));
+  $('#hour4 .scheduleText').val(localStorage.getItem('hour4'));
+  $('#hour5 .scheduleText').val(localStorage.getItem('hour5'));
 
 
   displayTime()
