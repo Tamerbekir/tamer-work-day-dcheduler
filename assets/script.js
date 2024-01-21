@@ -1,28 +1,38 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+const timeDisplay = $('#currentDay');
+const saveAppt = $(".saveBtn")
+
+
+
 const appt = $('textarea[name="description"]');
 
 
-
-
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage. 
-  const currentTime = dayjs(new Date())
-  $('#currentDay').text(currentTime);
-  
-  
-  
-  const saveAppt = $('.saveBtn');
+$(function workSchedule() {
   saveAppt.on('click', function () {  
-    console.log('9am appointment:', appt.val());
+    console.log('Appointment:', appt.val());
 
-    });
+  });
+
+  function displayTime() {
+    const rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
+    timeDisplay.text(rightNow);
+  }
 
 
+  
 
-    
-    // HINT: What does `this` reference in the click listener
+  displayTime()
+  setInterval(displayTime, 1000);  
+  });
+  
+
+
+  // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage. 
+
+  // HINT: What does `this` reference in the click listener
     // function? How can DOM traversal be used to get the "hour-x" id of the
     // time-block containing the button that was clicked? How might the id be
     // useful when saving the description in local storage?
@@ -37,21 +47,20 @@ $(function () {
     // HINT: How can the id attribute of each time-block be used to do this?
 
     // TODO: Add code to display the current date in the header of the page ✅
-  });
+
+
+  //! Storage not currently working
+  // let appointments = localStorage.getItem('appointments');
+  // const today = dayjs().startOf('day');
+
+  // function savetext() {
+  //   localStorage.setItem("#9am", JSON.stringify("desciption"))
+  // }
+  
+  // function showText() {
+  //   localStorage.getItem("currentDay")
+  // }
   
 
-  // const appt = document.querySelector(".description");
-  
-  // const saveAppt = document.querySelector(".saveBtn");
-
-  // saveBtn.addEventListener("click", function (e) { //e = event, or evt is event 
-  //   e.preventDefault();
-  
-  //   const email = document.querySelector(".description").value;
-  
-
-  
-  //     localStorage.setItem("email", email);
-  
-
-  //   })
+  // showText()
+  // savetext()
