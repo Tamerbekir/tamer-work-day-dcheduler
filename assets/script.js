@@ -3,7 +3,6 @@
 // in the html.
 
 const timeDisplay = $('#currentDay');
-// const today = dayjs().startOf('day');
 const saveAppt = $(".saveBtn")
 let timeBlock = $(".time-block")
 
@@ -27,11 +26,13 @@ $(saveAppt).on('click', function () {
   console.log(hourValue, descriptionValue)
   // saveReminder()
 });
+for (let i = 0; i <= 9; i++) {
+  $(`#hour${i} .scheduleText`).val(localStorage.getItem(`hour${i}`));
+}
 
 
-
-const today = dayjs().startOf('day');
-let rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
+// const today = dayjs().startOf('day');
+// let rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
 
 
 //! PAST, FUTURE AND PRESENT ATTRIBUTES TO SCHEDULE
@@ -41,35 +42,38 @@ let rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
 //? append class to page?
 
 function scheduleAttributes() {
-  
   $.each(timeBlock, function() {
-    let scheduledTime = parseInt($(this).attr('id').split("hour")[1]);
     let currentHour = dayjs().hour();
+    let scheduledTime = parseInt($(this).attr('id').split("hour")[1]);
 
-      //if schedule made is BEFORE the current hour
-      if (scheduledTime < currentHour) {
-        $(this).addClass('past');
-      //if schedule made is within the the current hour
-      } else if (scheduledTime === currentHour) {
-        $(this).addClass('present');
-      //if schedule made AFTER the the current hour
-      } else if (scheduledTime > currentHour) {
-        $(this).addClass('future');{ 
-      }
+    // if schedule made is BEFORE the current hour
+    if (scheduledTime < currentHour) {
+      $(this).addClass('past');
+    } else if (scheduledTime === currentHour) {
+      // if schedule made WITHIN the current hour
+      $(this).addClass('present');
+      $(this).removeClass('past');
+    } else if (scheduledTime > currentHour) {
+      // if schedule made AFTER the current hour
+      $(this).removeClass('past');
+      $(this).addClass('future');
     }
-  })
+  });
 }
 
+//! For Loop for storage not working. If not, use this
+// $('#hour9, .scheduleText').val(localStorage.getItem('hour9'));
+// $('#hour10 .scheduleText').val(localStorage.getItem('hour10'));
+// $('#hour11 .scheduleText').val(localStorage.getItem('hour11'));
+// $('#hour12 .scheduleText').val(localStorage.getItem('hour12'));
+// $('#hour1 .scheduleText').val(localStorage.getItem('hour1'));
+// $('#hour2 .scheduleText').val(localStorage.getItem('hour2'));
+// $('#hour3 .scheduleText').val(localStorage.getItem('hour3'));
+// $('#hour4 .scheduleText').val(localStorage.getItem('hour4'));
+// $('#hour5 .scheduleText').val(localStorage.getItem('hour5'));
 
-$('#hour9, .scheduleText').val(localStorage.getItem('hour9'));
-$('#hour10 .scheduleText').val(localStorage.getItem('hour10'));
-$('#hour11 .scheduleText').val(localStorage.getItem('hour11'));
-$('#hour12 .scheduleText').val(localStorage.getItem('hour12'));
-$('#hour1 .scheduleText').val(localStorage.getItem('hour1'));
-$('#hour2 .scheduleText').val(localStorage.getItem('hour2'));
-$('#hour3 .scheduleText').val(localStorage.getItem('hour3'));
-$('#hour4 .scheduleText').val(localStorage.getItem('hour4'));
-$('#hour5 .scheduleText').val(localStorage.getItem('hour5'));
+
+
 
 scheduleAttributes()
 displayTime()
