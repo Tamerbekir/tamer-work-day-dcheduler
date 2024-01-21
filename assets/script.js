@@ -41,22 +41,23 @@ let rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
 //? append class to page?
 
 function scheduleAttributes() {
-
+  
   $.each(timeBlock, function() {
-    //! THIS = timeBlock
     let scheduledTime = parseInt($(this).attr('id').split("hour")[1]);
-    let currentHour = dayjs().hour()
-    // turning string to number (time), getting attribute from HTML and splitting array into substrings via child from HTML
+    let currentHour = dayjs().hour();
 
-    // const today = dayjs().startOf('day');
-
-    if (scheduledTime.isBefore(currentHour)) {
-      $(this).addClass('.past');
-    } else if (scheduledTime.isSame(currentHour)) {
-      $(this).addClass('.present');
+      //if schedule made is BEFORE the current hour
+      if (scheduledTime < currentHour) {
+        $(this).addClass('past');
+      //if schedule made is within the the current hour
+      } else if (scheduledTime === currentHour) {
+        $(this).addClass('present');
+      //if schedule made AFTER the the current hour
+      } else if (scheduledTime > currentHour) {
+        $(this).addClass('future');{ 
+      }
     }
   })
-  // console.log(scheduleAttributes)
 }
 
 
