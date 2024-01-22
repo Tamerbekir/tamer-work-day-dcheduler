@@ -63,11 +63,11 @@ body {
     font-size: 20px;
     border: #00000049 solid 2px;
     border-radius: 10% 0% 0% 10%;
-    width: 95px;
     border-radius: 12%;
-  }
+    width: 95px;
+  } 
 
   textarea{
     border: #00000049 solid 2px;
   }
-
+ 
