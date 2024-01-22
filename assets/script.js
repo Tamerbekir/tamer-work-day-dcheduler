@@ -30,23 +30,23 @@ for (let i = 0; i <= 12; i++) {
 }
 
 
-//! PAST, FUTURE AND PRESENT ATTRIBUTES TO SCHEDULE. NOT WORKING AS INTENDED
+//! PAST, FUTURE AND PRESENT ATTRIBUTES TO SCHEDULE.
 function scheduleAttributes() {
-  let twentyFourHour = dayjs().format("H");
+  let twentyFourHour = parseInt(dayjs().format("H"));
 
   $(timeBlock).each(function () {
-    let scheduledPlanner = parseInt($(this).attr("id").split("hour")[1]);
+    let scheduledPlanner = parseInt($(this).attr("id").split("-")[1]);
     console.log(scheduledPlanner, twentyFourHour);
 
-    // Apply classes when comapring of scheduledPlanner and twentyFourHour
+    // Apply classes when comapring scheduledPlanner and twentyFourHour
     if (scheduledPlanner < twentyFourHour) {
-      // If before current time
+      // If before current time, apply class
       $(this).addClass("past").removeClass("future present");
     } else if (scheduledPlanner === twentyFourHour) {
-      // If within current time
+      // If within current time, apply class
       $(this).addClass("present").removeClass("past future");
     } else {
-      // Otherwise, all time is in the future
+      // Otherwise, all time is in the future, apply class
       $(this).addClass("future").removeClass("past present");
     }
   });
