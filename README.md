@@ -30,7 +30,7 @@ The following animation demonstrates the application functionality:
 Here is a daily player where a user can set up their daily to-do's, which will show the user the past (grey), the current time (red) and the future open availability (green). When the user enters their current or future plans, the schedule will save to their local machine.
 
 ## Screenshot
-
+![Daily Scheduler Screenshot](<Screenshot 2024-01-22 at 14.46.17.png>)
 
 ## Link
-<a href="https://tamerbekir.github.io/tamer-mets-quiz/">Link to Daily Scheduler</a>
+<a href="https://tamerbekir.github.io/tamer-work-day-scheduler/">Link to Daily Scheduler</a>
