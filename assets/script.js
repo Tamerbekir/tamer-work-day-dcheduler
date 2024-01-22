@@ -19,16 +19,15 @@ function displayTime() {
 $(saveAppt).on('click', function () {
   // THIS = saveAppt function
   let descriptionValue = $(this).siblings('.scheduleText').val();
-  let hourValue = $(this).parent().attr('id');
+  let hourValue = $(this).parent().attr('id')
   localStorage.setItem(hourValue, descriptionValue);
   console.log(hourValue, descriptionValue)
 });
 
 //for Loop saves all entry to local storage, 12 being the highest number
-for (let i = 0; i <= 12; i++) {
+for (let i = 0; i <= 17; i++) {
   $(`#hour${i} .scheduleText`).val(localStorage.getItem(`hour${i}`));
 }
-
 
 //! PAST, FUTURE AND PRESENT ATTRIBUTES TO SCHEDULE.
 function scheduleAttributes() {

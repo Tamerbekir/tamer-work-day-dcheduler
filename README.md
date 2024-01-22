@@ -22,9 +22,6 @@ THEN the text for that event is saved in local storage<br>
 WHEN I refresh the page<br>
 THEN the saved events persist<br>
 
-The following animation demonstrates the application functionality:
-
-
 ## Description
 
 Here is a daily player where a user can set up their daily to-do's, which will show the user the past (grey), the current time (red) and the future open availability (green). When the user enters their current or future plans, the schedule will save to their local machine.
