@@ -27,7 +27,7 @@ THEN the saved events persist<br>
 Here is a daily player where a user can set up their daily to-do's, which will show the user the past (grey), the current time (red) and the future open availability (green). When the user enters their current or future plans, the schedule will save to their local machine.
 
 ## Screenshot
-![Daily Scheduler Screenshot](<Screenshot 2024-01-22 at 14.46.17.png>)
+![Daily Scheduler Screenshot](<./assets/Screenshot 2024-01-24 at 10.31.46.png>)>
 
 ## Link
 <a href="https://tamerbekir.github.io/tamer-work-day-scheduler/">Link to Daily Scheduler</a>
